@@ -1,0 +1,86 @@
+<!DOCTYPE html>  <html>  
+<head>  
+    <title>City Central Library</title>  
+    <style>  
+        body{  
+            font-family: Arial;  
+            text-align: center;  
+        }  
+        table{  
+            width: 80%;  
+            margin: auto;  
+            border-collapse: collapse;  
+        }  
+        th, td{  
+            border: 1px solid black;  
+            padding: 10px;  
+        }  
+        th{  
+            background-color: lightblue;  
+        }  
+        .available{  
+            background-color: lightgreen;  
+        }  
+        .notavailable{  
+            background-color: pink;  
+        }  
+    </style>  
+</head>  
+<body>  <h2>City Central Library</h2>  
+<input type="text" id="search" placeholder="Search book" onkeyup="searchBook()">  
+<br><br>  
+<table id="library">  
+    <tr>  
+        <th>Title</th>  
+        <th>Author</th>  
+        <th>ISBN</th>  
+        <th>Availability</th>  
+    </tr>  
+    <tr>  
+        <td>Harry Potter</td>  
+        <td>J.K. Rowling</td>  
+        <td>101</td>  
+        <td class="available">Available</td>  
+    </tr>  
+    <tr>  
+        <td>Wings of Fire</td>  
+        <td>A.P.J Abdul Kalam</td>  
+        <td>102</td>  
+        <td class="notavailable">Not Available</td>  
+    </tr>  
+    <tr>  
+        <td>The Alchemist</td>  
+        <td>Paulo Coelho</td>  
+        <td>103</td>  
+        <td class="available">Available</td>  
+    </tr>  
+    <tr>  
+        <td>Rich Dad Poor Dad</td>  
+        <td>Robert Kiyosaki</td>  
+        <td>104</td>  
+        <td class="available">Available</td>  
+    </tr>  
+</table>  
+<script>  
+    function searchBook() {  
+        var input = document.getElementById("search").value.toLowerCase();  
+        var table = document.getElementById("library");  
+        var tr = table.getElementsByTagName("tr");  
+
+        for (var i = 1; i < tr.length; i++) {  
+            var td = tr[i].getElementsByTagName("td")[0];  
+
+            if (td) {  
+                var text = td.innerHTML.toLowerCase();  
+
+                if (text.indexOf(input) > -1) {  
+                    tr[i].style.display = "";  
+                } else {  
+                    tr[i].style.display = "none";  
+                }  
+            }  
+        }  
+    }  
+</script>
+</body>  
+</html>
