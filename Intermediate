@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>City Central Library</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h2{
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .container{
+            width: 85%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        input{
+            width: 60%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+        input:focus{
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52,152,219,0.5);
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td{
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th{
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even){
+            background-color: #f9f9f9;
+        }
+        tr:hover{
+            background-color: #eef6ff;
+            transition: 0.3s;
+        }
+        .available{
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+        }
+        .notavailable{
+            background-color: #f8d7da;
+            color: #721c24;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> City Central Library</h2>
+        <input type="text" id="search" placeholder="Search book by title..." onkeyup="searchBook()">
+        <table id="library">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>ISBN</th>
+                <th>Availability</th>
+            </tr>
+            <tr>
+                <td>Harry Potter</td>
+                <td>J.K. Rowling</td>
+                <td>101</td>
+                <td class="available">Available</td>
+            </tr>
+            <tr>
+                <td>Wings of Fire</td>
+                <td>A.P.J Abdul Kalam</td>
+                <td>102</td>
+                <td class="notavailable">Not Available</td>
+            </tr>
+            <tr>
+                <td>The Alchemist</td>
+                <td>Paulo Coelho</td>
+                <td>103</td>
+                <td class="available">Available</td>
+            </tr>
+            <tr>
+                <td>Rich Dad Poor Dad</td>
+                <td>Robert Kiyosaki</td>
+                <td>104</td>
+                <td class="available">Available</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function searchBook() {
+            var input = document.getElementById("search").value.toLowerCase();
+            var table = document.getElementById("library");
+            var tr = table.getElementsByTagName("tr");
+
+            for (var i = 1; i < tr.length; i++) {
+                var td = tr[i].getElementsByTagName("td")[0];
+
+                if (td) {
+                    var text = td.innerHTML.toLowerCase();
+
+                    if (text.indexOf(input) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
